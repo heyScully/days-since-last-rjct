@@ -114,7 +114,7 @@ Date.daysBetween = function( date1, date2 ) {
 }
 
 //Set the last reject date (month number minus 1 b/c of 0 index)
-var last_rjct  = new Date(2019, 6, 1); 
+var last_rjct  = new Date(2019, 5, 16); 
 var today= new Date();
 var days = Date.daysBetween(last_rjct, today);
 document.getElementById("day").textContent=days;
