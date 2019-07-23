@@ -1,0 +1,125 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Days Since</title>
+  <style>
+	.date {
+	display: block;
+	width: 140px;
+	margin: 30px auto;
+	text-align: center;
+	position: relative;
+}
+
+.date .binds {
+	position: absolute;
+	height: 15px;
+	width: 105px;
+	background: transparent;
+	border: 2px solid #999;
+	border-width: 0 5px;
+	top: -6px;
+	left: 0px;
+	right: 0;
+	margin: auto;
+  border-radius: 5px; 
+}
+
+.date .month {
+	background: #a92900; /* Old browsers */
+  background: -moz-linear-gradient(left, #a92900 0%, #d73300 50%, #a92900 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, #a92900 0%,#d73300 50%,#a92900 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #a92900 0%,#d73300 50%,#a92900 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	display: block;
+	padding: 8px 0;
+	color: #fff;
+	height: 14px;
+  width:140px;
+	font-weight: bold;
+	border-bottom: 2px solid #333;
+	box-shadow: inset 0 -1px 0 0 #666;
+  border-radius: 20px 20px 0 0;
+  color: #444;
+}
+
+.date .day {
+	display: block;
+    margin: 0;
+    padding: 10px 0;
+    font-size: 85px;
+    height: 110px;
+    width: 140px;
+    box-shadow: 0 0 3px #ccc;
+    position: relative;
+    border-radius: 0 0px 20px 20px;
+    background: #d0d0d0;
+    color: #444;
+}
+
+/*.date .day::after {
+	content: '';
+	display: block;
+	height: 100%;
+	width: 96%;
+	position: absolute;
+	top: 3px;
+	left: 2%;
+	z-index: -1;
+	box-shadow: 0 0 3px #ccc;
+}
+
+.date .day::before {
+	content: '';
+	display: block;
+	height: 100%;
+	width: 90%;
+	position: absolute;
+	top: 6px;
+	left: 5%;
+	z-index: -1;
+	box-shadow: 0 0 3px #ccc;
+}*/
+
+</style>
+
+</head>
+
+<body>
+  <div class="date">
+	<span class="binds"></span>
+	<span class="month"></span>
+	<h1 class="day" id="day"></h1>
+    <strong>Days Since Last .ACKD RJCT</strong>
+  </div>
+</body>
+
+<script>
+
+Date.daysBetween = function( date1, date2 ) {
+  //Get 1 day in milliseconds
+  var one_day=1000*60*60*24;
+
+  // Convert both dates to milliseconds
+  var date1_ms = date1.getTime();
+  var date2_ms = date2.getTime();
+
+  // Calculate the difference in milliseconds
+  var difference_ms = date2_ms - date1_ms;
+    
+  // Convert back to days and return
+  return Math.round(difference_ms/one_day); 
+}
+
+//Set the last reject date (month number minus 1 b/c of 0 index)
+var last_rjct  = new Date(2019, 6, 1); 
+var today= new Date();
+var days = Date.daysBetween(last_rjct, today);
+document.getElementById("day").textContent=days;
+console.log(days);
+
+
+</script>
+</html>
